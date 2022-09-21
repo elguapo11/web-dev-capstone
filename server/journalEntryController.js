@@ -9,7 +9,11 @@ module.exports = {
     }, 
     postJournalEntries: (req, res) => {
         res.sendStatus(200)
+    },
+    deleteJournalEntries: (req, res) => {
+        res.sendStatus(200)
     }
+    
 }
 
 
