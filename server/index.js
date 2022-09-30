@@ -1,11 +1,24 @@
 // server/index.js
-
+require('dotenv').config(); 
 const express = require("express");
 const journalEntryController = require('./journalEntryController')
+const {Sequelize} = require('sequelize');
 
-const PORT = process.env.PORT || 3001;
+
+
+
+const {PORT, CONNECION_STRING} = process.env
 
 const app = express();
+
+const sequelize = new Sequelize (CONNECION_STRING, {
+  dialect: "postgres",
+  dialectOptions: {
+    ssl: {
+      rejectUnauthorized: false, 
+    },
+  }, 
+}); 
 
 app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
@@ -17,5 +30,5 @@ app.get('/api/journalentries', journalEntryController.getJournalEntries)
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
-});
+}); 
 
