@@ -18,7 +18,7 @@ CREATE TABLE comments (
     comments_id SERIAL PRIMARY KEY, 
     comment_text VARCHAR(500),
     journal_entry_fk INT REFERENCES journal_entry(journal_entry_id),
-    user_id_fk REFERENCES users(user_id),
+    user_id_fk INT REFERENCES users(user_id),
     date_created TIMESTAMP
     
 );
