@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 
 const EntryHeader = () => {
     return <h3>Start Writing</h3>

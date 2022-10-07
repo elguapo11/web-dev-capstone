@@ -1,13 +1,17 @@
 // server/index.js
 require('dotenv').config(); 
+
 const express = require("express");
 const journalEntryController = require('./journalEntryController')
 const { Sequelize } = require('sequelize');
 
 
+
 const {PORT, CONNECTION_STRING} = process.env;
 
 const app = express();
+app.use(express.json());
+
 
 const sequelize = new Sequelize (CONNECTION_STRING, {
   dialect: "postgres",
@@ -28,20 +32,22 @@ sequelize.authenticate()
     app.get('/api/journalentries', journalEntryController.getJournalEntries); 
 
     app.post('/journals', async (req, res) => {
+
+
+      const { journals } = req.body;
       
       await sequelize.query(`
         insert into journal_entry(
-          journal_text, 
-          date_created 
+          journal_text  
           ) values (
-            'super cool', 
-            now()
+            '${journals}'
             );
-          `)
+          `);
 
       console.log(req.body);
       res.sendStatus(200); 
     }); 
+
     
     //this line of code is pulling from journalentrycontroller, and we used "object.property", which makes reading the code easier, instead of req, res. 
     
