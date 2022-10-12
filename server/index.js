@@ -25,6 +25,8 @@ const sequelize = new Sequelize (CONNECTION_STRING, {
 sequelize.authenticate()
 
   .then(() => {
+    app.set('db', { sequelize })
+    
     app.get("/api", (req, res) => {
       res.json({ message: "Hello from server!" });
     });

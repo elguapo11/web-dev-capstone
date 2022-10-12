@@ -1,40 +1,44 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const EntryHeader = () => {
-    return <h3>Start Writing</h3>
-}
+  return <h3>Start Writing</h3>;
+};
 
-const EntryBody = props => {
-    const lines = props.entryData.map((line, index) => {
-        return (
-            <div key={index}>
-                <h2>{line.title}</h2>
-                <p>{line.body}</p>
-                <button onClick={() => props.removeEntry(index)}>Delete</button>
-            </div>
-        )
-    })
-
+const EntryBody = (props) => {
+  const lines = props.entryData.map((line, index) => {
     return (
-        <div>
-            {lines}  
-        </div>
-    )
-}
+      <div key={index}>
+        <h2>{line.title}</h2>
+        <p>{line.body}</p>
+        <button onClick={() => props.removeEntry(index)}>Delete</button>
+      </div>
+    );
+  });
+
+  return <div>{lines}</div>;
+};
 
 const Entries = (props) => {
-    
-        const { entryData, removeEntry } = props;
+  const { entryData, removeEntry } = props;
 
-        return (
-            <div>
-                <h2>My Entries</h2>
-               
-                <EntryHeader />
-                <EntryBody entryData={entryData} removeEntry={removeEntry}/>
-            </div>
+  const [journalShow, setJournalShow] = useState([]);
 
-        )
-    
-}
+  useEffect(() => {
+    axios.get("/api/journalentries").then((res) => {
+      const journalEntryList = res.data;
+      console.log(journalEntryList);
+    });
+  }, []);
 
-export default Entries
+  return (
+    <div>
+      <h2>My Entries</h2>
+
+      <EntryHeader />
+      <EntryBody entryData={entryData} removeEntry={removeEntry} />
+    </div>
+  );
+};
+
+export default Entries;

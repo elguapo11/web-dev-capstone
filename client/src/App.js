@@ -14,7 +14,7 @@ class App extends Component {
 
     this.setState({
       entries: entries.filter ((entry, i) => {
-        return i != index
+        return i !== index
       })
     })
   }
