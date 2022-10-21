@@ -32,6 +32,8 @@ sequelize.authenticate()
     });
      
     app.get('/api/journalentries', journalEntryController.getJournalEntries); 
+    
+    app.put('/api/journalentries/edit', journalEntryController.putJournalEntries)
 
     app.post('/journals', async (req, res) => {
 

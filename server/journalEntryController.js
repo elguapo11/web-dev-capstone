@@ -9,7 +9,9 @@ module.exports = {
     console.log(journalEntryList);
     res.status(200).send(journalEntryList);
   },
-  putJournalEntries: (req, res) => {
+  putJournalEntries: async (req, res) => {
+    const { sequelize } = req.app.get("db");
+    const [edit, metadata]  = await sequelize.query(`UPDATE journal_entry SET journal_text = '${'sldk'}' WHERE journal_entry_id = ${1}`)
     res.status(200).send("dope");
   },
   postJournalEntries: (req, res) => {
