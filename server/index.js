@@ -35,6 +35,9 @@ sequelize
 
     app.post("/api/journalentries/create", journalEntryController.postJournalEntries);
 
+    app.delete("/api/journalentries/deleteEntries", journalEntryController.deleteJournalEntries);
+
+
     //this line of code is pulling from journalentrycontroller, and we used "object.property", which makes reading the code easier, instead of req, res.
 
     app.listen(PORT, () => {
