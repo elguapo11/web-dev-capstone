@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import axios from "axios";
 
 function Create() {
   const titleRef = useRef();
@@ -6,10 +7,15 @@ function Create() {
 
   function onSubmit(e) {
     e.preventDefault();
-    console.log({
-      text: titleRef.current.value,
+    const journalDataBody = {
+      title: titleRef.current.value,
       entry: entryRef.current.value,
-    });
+    };
+
+    axios
+      .post("/api/journalentries/create", journalDataBody)
+
+      .then((response) => console.log(journalDataBody));
   }
 
   return (
@@ -20,8 +26,11 @@ function Create() {
       <label htmlFor="title">Start Writing</label>
       <input ref={entryRef} type="entry" id="entry" />
       <button type="submit">Submit</button>
+     
     </form>
   );
 }
+
+<h2>Hello world</h2>;
 
 export default Create;

@@ -10,7 +10,7 @@ module.exports = {
     res.status(200).send(journalEntryList);
   },
   putJournalEntries: async (req, res) => {
-    const { sequelize } = req.app.get("db");
+    const { sequelize } = req.app.get("title");
     const [edit, metadata] = await sequelize.query(
       `UPDATE journal_entry SET journal_text = '${"sldk"}' WHERE journal_entry_id = ${1}`
     );
@@ -18,10 +18,13 @@ module.exports = {
   },
   postJournalEntries: async (req, res) => {
     const { sequelize } = req.app.get("db");
+
+    const { entry, title } = req.body;
+
     const create = await sequelize.query(
-      `INSERT INTO journal_entry (journal_text) VALUES ('${"sd"}') `
+      `INSERT INTO journal_entry (journal_text, journal_title) VALUES ('${entry}','${title}') `
     );
-    res.status(200).send("cool beans");
+    res.status(200).send(req.body);
   },
   deleteJournalEntries: async (req, res) => {
     const { sequelize } = req.app.get("db");
