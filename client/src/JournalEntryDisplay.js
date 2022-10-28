@@ -1,35 +1,46 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 function JournalEntryDisplay() {
   const [retrieveEntries, setRetrieveEntries] = useState([]);
-  useEffect(() => {
-    axios.get("/api/journalentries").then((res) => {
-      setRetrieveEntries(res.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("/api/journalentries").then((res) => {
+  //     setRetrieveEntries(res.data);
+  //   });
+  // }, []);
+
+    const handleClick = (e) => {
+      axios.get("/api/journalentries").then((res) => {
+        setRetrieveEntries(res.data)
+        console.error();
+      });
+    }
 
   return (
+    
+    
     <div>
       <div
-        style={{
-          display: "flex",
-          alignSelf: "self",
-          height: "100vh",
-          color: "blue",
-        }}
+       
       >
+         <button onClick={handleClick}>Get Journals </button>
         {retrieveEntries.map((entry, index) => {
           return (
             <div key={index}>
               <div>
-                <h2>{entry.journal_text}</h2>
+                <li htmlFor="title">{entry.journal_title}</li>
+                <li htmlFor="text">{entry.journal_text}</li>
               </div>
             </div>
           );
         })}
       </div>
+        
+
+    
+
     </div>
+    
   );
 }
 

@@ -11,7 +11,6 @@ function Create() {
       title: titleRef.current.value,
       entry: entryRef.current.value,
     };
-    
 
     axios
       .post("/api/journalentries/create", journalDataBody)
@@ -27,7 +26,6 @@ function Create() {
       <label htmlFor="title">Start Writing</label>
       <input ref={entryRef} type="entry" id="entry" />
       <button type="submit">Submit</button>
-     
     </form>
   );
 }
