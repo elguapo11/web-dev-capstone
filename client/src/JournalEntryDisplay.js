@@ -22,16 +22,11 @@ function JournalEntryDisplay() {
             <div
                 style={{
                   display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
+                  alignSelf: 'self',
                   height: '100vh',
+                  color: "blue", 
                 }}
             >
-                <h2>hello world</h2>
-                
-            </div>
-                
-                
                 {retrieveEntries.map( (entry, index) => {
                   return (
                   <div key={index}>
@@ -44,6 +39,12 @@ function JournalEntryDisplay() {
         }
 
         )}
+                
+                
+            </div>
+                
+                
+               
 
         
       </div>
