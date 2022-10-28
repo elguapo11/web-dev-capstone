@@ -11,6 +11,7 @@ function Create() {
       title: titleRef.current.value,
       entry: entryRef.current.value,
     };
+    
 
     axios
       .post("/api/journalentries/create", journalDataBody)
