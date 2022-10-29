@@ -1,5 +1,6 @@
 import Create  from './Entries';
 import Retrieve from './JournalEntryDisplay'
+import DeleteJournalEntry from './DeleteEntry';
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
           <h2>My Online Journal</h2>
       <Create />
       <Retrieve/>
+      <DeleteJournalEntry/>
         
     </div>
   );

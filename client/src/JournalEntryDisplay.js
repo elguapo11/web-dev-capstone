@@ -3,44 +3,32 @@ import axios from "axios";
 
 function JournalEntryDisplay() {
   const [retrieveEntries, setRetrieveEntries] = useState([]);
-  // useEffect(() => {
-  //   axios.get("/api/journalentries").then((res) => {
-  //     setRetrieveEntries(res.data);
-  //   });
-  // }, []);
 
-    const handleClick = (e) => {
-      axios.get("/api/journalentries").then((res) => {
-        setRetrieveEntries(res.data)
-        console.error();
-      });
-    }
+  const handleClick = (e) => {
+    axios.get("/api/journalentries").then((res) => {
+      setRetrieveEntries(res.data);
+      console.error();
+    });
+  };
 
   return (
-    
-    
     <div>
-      <div
-       
-      >
-         <button onClick={handleClick}>Get Journals </button>
+      <div>
+        <button onClick={handleClick}>Get Journals </button>
         {retrieveEntries.map((entry, index) => {
           return (
             <div key={index}>
               <div>
-                <li htmlFor="title">{entry.journal_title}</li>
-                <li htmlFor="text">{entry.journal_text}</li>
+                <li htmlFor="Journal Entry Number"> Entry number: {entry.journal_entry_id}</li>
+                <li htmlFor="title"> Title: {entry.journal_title}</li>
+                <li htmlFor="text">Entry: {entry.journal_text}</li>
+                <li htmlFor="Date Created">Date Created: {entry.date_created}</li>
               </div>
             </div>
           );
         })}
       </div>
-        
-
-    
-
     </div>
-    
   );
 }
 

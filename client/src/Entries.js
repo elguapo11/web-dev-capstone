@@ -15,7 +15,7 @@ function Create() {
     axios
       .post("/api/journalentries/create", journalDataBody)
 
-      .then((response) => console.log(journalDataBody));
+      .then((response) => console.log('journal created'));
   }
 
   return (
@@ -26,10 +26,9 @@ function Create() {
       <label htmlFor="title">Start Writing</label>
       <input ref={entryRef} type="entry" id="entry" />
       <button type="submit">Submit</button>
+      
     </form>
   );
 }
-
-<h2>Hello world</h2>;
 
 export default Create;

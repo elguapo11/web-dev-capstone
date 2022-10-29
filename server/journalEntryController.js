@@ -1,5 +1,7 @@
 //functions itself go here
 
+const { DATE, DATEONLY } = require("sequelize");
+
 module.exports = {
   getJournalEntries: async (req, res) => {
     const { sequelize } = req.app.get("db");
@@ -22,16 +24,21 @@ module.exports = {
     const { entry, title } = req.body;
 
     const create = await sequelize.query(
-      `INSERT INTO journal_entry (journal_text, journal_title) VALUES ('${entry}','${title}') `
+      `INSERT INTO journal_entry (journal_text, journal_title, date_created) VALUES ('${entry}','${title}',CURRENT_TIMESTAMP) `
     );
     res.status(200).send(req.body);
   },
+
+
   deleteJournalEntries: async (req, res) => {
     const { sequelize } = req.app.get("db");
+
+    const { entryID } = req.body;
+
     const deleteEntry = await sequelize.query(
-      `DELETE FROM journal_entry WHERE journal_text = ('${"sd"}') `
+      `DELETE FROM journal_entry WHERE journal_entry_id = ('${entryID}') `
     );
-    res.status(200).send("success");
+    res.status(200).send(res);
   },
 };
 
