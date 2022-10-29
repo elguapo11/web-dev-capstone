@@ -21,7 +21,7 @@ function JournalEntryDisplay() {
               <div>
                 <li htmlFor="Journal Entry Number"> Entry number: {entry.journal_entry_id}</li>
                 <li htmlFor="title"> Title: {entry.journal_title}</li>
-                <li htmlFor="text">Entry: {entry.journal_text}</li>
+                <li htmlFor="text">Thoughts of the day: {entry.journal_text}</li>
                 <li htmlFor="Date Created">Date Created: {entry.date_created}</li>
               </div>
             </div>
