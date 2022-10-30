@@ -26,7 +26,7 @@ sequelize
     app.set("db", { sequelize });
 
     app.get("/api", (req, res) => {
-      res.json({ message: "Hello from server!" });
+      res.json({ message: "Hello from my home office!" });
     });
 
     app.get("/api/journalentries", journalEntryController.getJournalEntries);
