@@ -19,10 +19,12 @@ function JournalEntryDisplay() {
           return (
             <div key={index}>
               <div>
-                <li htmlFor="Journal Entry Number"> Entry number: {entry.journal_entry_id}</li>
-                <li htmlFor="title"> Title: {entry.journal_title}</li>
-                <li htmlFor="text">Thoughts of the day: {entry.journal_text}</li>
-                <li htmlFor="Date Created">Date Created: {entry.date_created}</li>
+                <h1 htmlFor="Journal Entry Number"> Entry number: {entry.journal_entry_id}</h1>
+                <h2 htmlFor="title"> Title: {entry.journal_title}</h2>
+                  <ul>
+                    <li htmlFor="text">Thoughts of the day: {entry.journal_text}</li>
+                    <li htmlFor="Date Created">Date Created: {entry.date_created}</li>
+                  </ul>
               </div>
             </div>
           );
