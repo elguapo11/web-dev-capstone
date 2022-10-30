@@ -29,16 +29,17 @@ module.exports = {
     res.status(200).send(req.body);
   },
 
-
   deleteJournalEntries: async (req, res) => {
     const { sequelize } = req.app.get("db");
 
-    const { entryID } = req.body;
+    const journalEntryID = req.params.id;
+    console.log("*****" + journalEntryID + "****");
 
     const deleteEntry = await sequelize.query(
-      `DELETE FROM journal_entry WHERE journal_entry_id = ('${entryID}') `
+      `DELETE FROM journal_entry WHERE journal_entry_id = ${journalEntryID}`
     );
-    res.status(200).send(res);
+
+    res.status(200).send();
   },
 };
 

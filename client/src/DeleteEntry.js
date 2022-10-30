@@ -8,12 +8,10 @@ function DeleteEntry() {
 
   function onSubmit(e) {
     e.preventDefault();
-    const journalEntryID = {
-      journalId: entryIDRef.current.value,
-    };
+    const journalEntryID = entryIDRef.current.value; 
 
     axios
-      .delete("/api/journalentries/deleteEntries", journalEntryID)
+      .delete(`/api/journalentries/${journalEntryID}`)
       .then((response) => console.log(`journal number ${journalEntryID} has been deleted`));
   }
 
