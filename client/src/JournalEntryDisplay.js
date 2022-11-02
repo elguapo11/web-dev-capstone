@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import JournalItem from "./JournalItem";
+
 
 function JournalEntryDisplay() {
   const [retrieveEntries, setRetrieveEntries] = useState([]);
@@ -15,21 +17,14 @@ function JournalEntryDisplay() {
     <div>
       <div>
         <button onClick={handleClick}>Get Journals </button>
-        {retrieveEntries.map((entry, index) => {
+        {retrieveEntries.map((entry) => {
           return (
-            <div key={index}>
-              <div>
-                <h1 htmlFor="Journal Entry Number"> Entry number: {entry.journal_entry_id}</h1>
-                <h2 htmlFor="title"> Title: {entry.journal_title}</h2>
-                  <ul>
-                    <li htmlFor="text">Thoughts of the day: {entry.journal_text}</li>
-                    <li htmlFor="Date Created">Date Created: {entry.date_created}</li>
-                  </ul>
-              </div>
-            </div>
+            <JournalItem entry={entry}/>
+          
           );
         })}
       </div>
+      
     </div>
   );
 }
