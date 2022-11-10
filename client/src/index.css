@@ -1,8 +1,8 @@
 
 * {
   margin: 0 auto; 
-  background-color: gray;
   width: 100%; 
+  background-color: gray;
 }
 
 body {
@@ -40,4 +40,17 @@ div {
 
 label {
   max-width: fit-content; 
+}
+
+form :hover {
+
+background-color: rgb(226, 230, 0);
+}
+
+form :active {
+  background-color: yellow;
+}
+
+form button {
+  background: rgb(5, 213, 228);
 }
